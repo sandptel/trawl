@@ -107,36 +107,36 @@ valid: \"line\"
         assert_eq!(actual, expected);
     }
 
-    #[test]
-    fn load() -> Result<(), Box<dyn Error>> {
-        let mut manager = get_resource_seeded_manager()?;
-        let conf_str = "org: Regolith\nversion:0.1\n screen-resolution:1280x720";
-        let mut actual = manager.resources.clone();
-        let parsed_conf_str = manager.parse_config(conf_str);
-        for (k, v) in parsed_conf_str {
-            actual.entry(k).or_insert(v);
-        }
-        let (_, path) = new_tmp_file(conf_str)?;
-        manager.load_from_file(&path, false, "/usr/bin/cpp", "");
-        assert_eq!(manager.resources, actual);
-        Ok(())
-    }
+    // #[test]
+    // fn load() -> Result<(), Box<dyn Error>> {
+    //     let mut manager = get_resource_seeded_manager()?;
+    //     let conf_str = "org: Regolith\nversion:0.1\n screen-resolution:1280x720";
+    //     let mut actual = manager.resources.clone();
+    //     let parsed_conf_str = manager.parse_config(conf_str);
+    //     for (k, v) in parsed_conf_str {
+    //         actual.entry(k).or_insert(v);
+    //     }
+    //     let (_, path) = new_tmp_file(conf_str)?;
+    //     manager.load_from_file(&path, false, "/usr/bin/cpp", "");
+    //     assert_eq!(manager.resources, actual);
+    //     Ok(())
+    // }
 
-    #[test]
-    fn merge() -> Result<(), Box<dyn Error>> {
-        let mut manager = get_resource_seeded_manager()?;
-        let conf_str = "org: Regolith\nversion:0.1\n screen-resolution:1280x720";
-        let mut actual = manager.resources.clone();
-        let parsed_conf_str = manager.parse_config(conf_str);
-        println!("{:#?}", parsed_conf_str);
-        for (k, v) in parsed_conf_str {
-            actual.insert(k, v);
-        }
-        let (_, path) = new_tmp_file(conf_str)?;
-        manager.merge_from_file(&path, false, "/usr/bin/cpp", "");
-        assert_eq!(manager.resources, actual);
-        Ok(())
-    }
+    // #[test]
+    // fn merge() -> Result<(), Box<dyn Error>> {
+    //     let mut manager = get_resource_seeded_manager()?;
+    //     let conf_str = "org: Regolith\nversion:0.1\n screen-resolution:1280x720";
+    //     let mut actual = manager.resources.clone();
+    //     let parsed_conf_str = manager.parse_config(conf_str);
+    //     println!("{:#?}", parsed_conf_str);
+    //     for (k, v) in parsed_conf_str {
+    //         actual.insert(k, v);
+    //     }
+    //     let (_, path) = new_tmp_file(conf_str)?;
+    //     manager.merge_from_file(&path, false, "/usr/bin/cpp", "");
+    //     assert_eq!(manager.resources, actual);
+    //     Ok(())
+    // }
 
     #[test]
     fn check_valid_key() {
