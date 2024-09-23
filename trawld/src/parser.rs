@@ -9,7 +9,7 @@ pub struct CliArgs {
     #[clap(short, long, value_parser, value_name = "filename")]
     pub load: Option<String>,
 
-    /// preprocessor to use [/usr/bin/cpp]
+    /// preprocessor to use [/run/current-system/sw/bin/cpp]
     #[clap(long, value_parser, value_name = "filename")]
     pub cpp: Option<String>,
 

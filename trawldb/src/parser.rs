@@ -18,7 +18,7 @@ pub struct CliArgs {
     #[clap(short, long, value_parser, value_name = "filename")]
     pub merge: Option<String>,
 
-    /// preprocessor to use [/usr/bin/cpp]
+    /// preprocessor to use [/run/current-system/sw/bin/cpp]
     #[clap(long, short, value_parser, conflicts_with = "nocpp")]
     pub cpp: Option<String>,
 

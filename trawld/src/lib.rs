@@ -23,7 +23,7 @@ impl ResourceManager {
     pub fn from_args(args: &CliArgs) -> ResourceManager {
         let command = match &args.cpp {
             Some(cmd) => cmd.clone(),
-            _ => String::from("/usr/bin/cpp"),
+            _ => String::from("/run/current-system/sw/bin/cpp"),
         };
         let resources = HashMap::new();
         let preprocessor = command;

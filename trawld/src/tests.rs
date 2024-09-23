@@ -48,7 +48,7 @@ valid: \"line\"
         let args = seed_args();
         ResourceManager {
             resources: HashMap::new(),
-            preprocessor: "/usr/bin/cpp".to_string(),
+            preprocessor: "/run/current-system/sw/bin/cpp".to_string(),
             logger: log::Logger::from(&args),
             args,
         }
@@ -78,7 +78,7 @@ valid: \"line\"
             args: args.clone(),
             resources: HashMap::new(),
             logger: Logger::from(&args),
-            preprocessor: args.cpp.unwrap_or(String::from("/usr/bin/cpp")),
+            preprocessor: args.cpp.unwrap_or(String::from("/run/current-system/sw/bin/cpp")),
         };
         assert_eq!(expected, manager);
     }
@@ -117,7 +117,7 @@ valid: \"line\"
     //         actual.entry(k).or_insert(v);
     //     }
     //     let (_, path) = new_tmp_file(conf_str)?;
-    //     manager.load_from_file(&path, false, "/usr/bin/cpp", "");
+    //     manager.load_from_file(&path, false, "/run/current-system/sw/bin/cpp", "");
     //     assert_eq!(manager.resources, actual);
     //     Ok(())
     // }
@@ -133,7 +133,7 @@ valid: \"line\"
     //         actual.insert(k, v);
     //     }
     //     let (_, path) = new_tmp_file(conf_str)?;
-    //     manager.merge_from_file(&path, false, "/usr/bin/cpp", "");
+    //     manager.merge_from_file(&path, false, "/run/current-system/sw/bin/cpp", "");
     //     assert_eq!(manager.resources, actual);
     //     Ok(())
     // }

@@ -91,7 +91,7 @@ impl<'a> Client<'a> {
         let args_str = args_list.join(" ");
         let new_cpp = match cpp {
             Some(preprocessor) if args_list.len() > 0 => Some((preprocessor.clone(), args_str)),
-            None if args_list.len() > 0 => Some((String::from("/usr/bin/cpp"), args_str)),
+            None if args_list.len() > 0 => Some((String::from("/run/current-system/sw/bin/cpp"), args_str)),
             Some(preprocessor) => Some((preprocessor.clone(), String::from(""))),
             _ => None,
         };
@@ -203,7 +203,7 @@ mod tests {
         let args = Client::get_cpp_with_args(&cpp, &Vec::new(), &Vec::new());
         assert_eq!(args, None);
 
-        let cpp = String::from("/usr/bin/cpp");
+        let cpp = String::from("/run/current-system/sw/bin/cpp");
         let args = Client::get_cpp_with_args(&Some(cpp.clone()), &Vec::new(), &Vec::new());
         assert_eq!(args, Some((cpp.clone(), String::new())));
 
